@@ -85,7 +85,7 @@ colorMap.set(0, "bg-neutral");
 colorMap.set(1, "bg-green");
 colorMap.set(2, "bg-blue");
 
-let disabledPokemon = new Set();
+let clickedPokemon = new Set();
 
 
 function updateBackgroundColor(pokemonId) {
@@ -105,24 +105,45 @@ function updateBackgroundColor(pokemonId) {
 
 
 function onPokemonClick(pokemonId) {
-  if (disabledPokemon.has(pokemonId)) {return;}
-	let pokemonPositiveList = pokemonPositiveRelations[pokemonId];
-	pokemonPositiveList.forEach(function(poke,index) {
-		if (pokemonValues[poke] !== 2) {
-			pokemonValues[poke]++;
-		}
-	}); 
-	let pokemonNegativeList = pokemonNegativeRelations[pokemonId];
-	pokemonNegativeList.forEach(function(poke,index) {
-		if (pokemonValues[poke] !== -2) {
-			pokemonValues[poke]--;
-		}
-	}); 
+  if (clickedPokemon.has(pokemonId)) {
+    let pokemonPositiveList = pokemonPositiveRelations[pokemonId];   
+    pokemonPositiveList.forEach(function(poke) {
+      if (pokemonValues[poke] !== -2) {
+        pokemonValues[poke]--;
+      }
+    });
+
+    let pokemonNegativeList = pokemonNegativeRelations[pokemonId];
+    pokemonNegativeList.forEach(function(poke) {
+      if (pokemonValues[poke] !== 2) {
+        pokemonValues[poke]++;
+      }
+    });
+
+
+
+    clickedPokemon.delete(pokemonId);
+  } else {
+    let pokemonPositiveList = pokemonPositiveRelations[pokemonId];
+	  pokemonPositiveList.forEach(function(poke,index) {
+      if (pokemonValues[poke] !== 2) {
+        pokemonValues[poke]++;
+      }
+    }); 
+	
+    let pokemonNegativeList = pokemonNegativeRelations[pokemonId];
+    pokemonNegativeList.forEach(function(poke,index) {
+      if (pokemonValues[poke] !== -2) {
+        pokemonValues[poke]--;
+      }
+    });
+    
+    clickedPokemon.add(pokemonId);
+  }
 
   updateBackgroundColor(pokemonId);
-
-  disabledPokemon.add(pokemonId);
 }
+
 
 function resetPokemonData() {
 	for (let pokemon in pokemonValues) {
@@ -138,7 +159,7 @@ function resetPokemonData() {
 		}
 	}
 
-  disabledPokemon.clear();
+  clickedPokemon.clear();
 
   const pokeballs = document.querySelectorAll('.pokeball');
   pokeballs.forEach(function(pokeball) {
@@ -150,7 +171,11 @@ document.addEventListener("DOMContentLoaded", function() {
   document.querySelectorAll('.group').forEach(function(element) {
 		element.addEventListener('click', function() {
 			const overlayImage = this.parentElement.querySelector('.pokeball');
-			overlayImage.style.display = 'inline';
+			if (overlayImage.style.display === 'none' || overlayImage.style.display === '') {
+          overlayImage.style.display = 'inline';
+      } else {
+          overlayImage.style.display = 'none';
+      }
 		});
 	});
   document.getElementById("reset__btn").onclick = function() { resetPokemonData(); };
@@ -158,5 +183,5 @@ document.addEventListener("DOMContentLoaded", function() {
     if (pokemonValues.hasOwnProperty(pokemon)) {
         document.getElementById(pokemon).onclick = function() { onPokemonClick(pokemon); };
     }
-}
+  }
 });
