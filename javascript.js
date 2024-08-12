@@ -85,6 +85,8 @@ colorMap.set(0, "bg-neutral");
 colorMap.set(1, "bg-green");
 colorMap.set(2, "bg-blue");
 
+let disabledPokemon = new Set();
+
 
 function updateBackgroundColor(pokemonId) {
 
@@ -103,6 +105,7 @@ function updateBackgroundColor(pokemonId) {
 
 
 function onPokemonClick(pokemonId) {
+  if (disabledPokemon.has(pokemonId)) {return;}
 	let pokemonPositiveList = pokemonPositiveRelations[pokemonId];
 	pokemonPositiveList.forEach(function(poke,index) {
 		if (pokemonValues[poke] !== 2) {
@@ -116,75 +119,44 @@ function onPokemonClick(pokemonId) {
 		}
 	}); 
 
-    updateBackgroundColor(pokemonId);
+  updateBackgroundColor(pokemonId);
+
+  disabledPokemon.add(pokemonId);
+}
+
+function resetPokemonData() {
+	for (let pokemon in pokemonValues) {
+		if (pokemonValues.hasOwnProperty(pokemon)) {
+			pokemonValues[pokemon] = 0;
+		}
+
+		let element = document.getElementById(pokemon);
+		element.classList.remove(...colorMap.values());
+		let colorClass = colorMap.get(pokemonValues[pokemon]);
+    	if (colorClass) {
+        	element.classList.add(colorClass);
+		}
+	}
+
+  disabledPokemon.clear();
+
+  const pokeballs = document.querySelectorAll('.pokeball');
+  pokeballs.forEach(function(pokeball) {
+    pokeball.style.display = 'none';
+  });
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  document.getElementById("absol").onclick = function() { onPokemonClick("absol"); };
-  document.getElementById("aegislash").onclick = function() { onPokemonClick("aegislash"); };
-  document.getElementById("azumarill").onclick = function() { onPokemonClick("azumarill"); };
-  document.getElementById("blastoise").onclick = function() { onPokemonClick("blastoise"); };
-  document.getElementById("blaziken").onclick = function() { onPokemonClick("blaziken"); };
-  document.getElementById("blissey").onclick = function() { onPokemonClick("blissey"); };
-  document.getElementById("buzzwole").onclick = function() { onPokemonClick("buzzwole"); };
-  document.getElementById("ceruledge").onclick = function() { onPokemonClick("ceruledge"); };
-  document.getElementById("chandelure").onclick = function() { onPokemonClick("chandelure"); };
-  document.getElementById("charizard").onclick = function() { onPokemonClick("charizard"); };
-  document.getElementById("cinderace").onclick = function() { onPokemonClick("cinderace"); };
-  document.getElementById("clefable").onclick = function() { onPokemonClick("clefable"); };
-  document.getElementById("comfey").onclick = function() { onPokemonClick("comfey"); };
-  document.getElementById("cramorant").onclick = function() { onPokemonClick("cramorant"); };
-  document.getElementById("crustle").onclick = function() { onPokemonClick("crustle"); };
-  document.getElementById("decidueye").onclick = function() { onPokemonClick("decidueye"); };
-  document.getElementById("delphox").onclick = function() { onPokemonClick("delphox"); };
-  document.getElementById("dodrio").onclick = function() { onPokemonClick("dodrio"); };
-  document.getElementById("dragapult").onclick = function() { onPokemonClick("dragapult"); };
-  document.getElementById("dragonite").onclick = function() { onPokemonClick("dragonite"); };
-  document.getElementById("duraludon").onclick = function() { onPokemonClick("duraludon"); };
-  document.getElementById("eldegoss").onclick = function() { onPokemonClick("eldegoss"); };
-  document.getElementById("espeon").onclick = function() { onPokemonClick("espeon"); };
-  document.getElementById("falinks").onclick = function() { onPokemonClick("falinks"); };
-  document.getElementById("garchomp").onclick = function() { onPokemonClick("garchomp"); };
-  document.getElementById("gardevoir").onclick = function() { onPokemonClick("gardevoir"); };
-  document.getElementById("gengar").onclick = function() { onPokemonClick("gengar"); };
-  document.getElementById("glaceon").onclick = function() { onPokemonClick("glaceon"); };
-  document.getElementById("goodra").onclick = function() { onPokemonClick("goodra"); };
-  document.getElementById("greedent").onclick = function() { onPokemonClick("greedent"); };
-  document.getElementById("greninja").onclick = function() { onPokemonClick("greninja"); };
-  document.getElementById("gyarados").onclick = function() { onPokemonClick("gyarados"); };
-  document.getElementById("hooh").onclick = function() { onPokemonClick("hooh"); };
-  document.getElementById("hoopa").onclick = function() { onPokemonClick("hoopa"); };
-  document.getElementById("inteleon").onclick = function() { onPokemonClick("inteleon"); };
-  document.getElementById("lapras").onclick = function() { onPokemonClick("lapras"); };
-  document.getElementById("leafeon").onclick = function() { onPokemonClick("leafeon"); };
-  document.getElementById("lucario").onclick = function() { onPokemonClick("lucario"); };
-  document.getElementById("machamp").onclick = function() { onPokemonClick("machamp"); };
-  document.getElementById("mamoswine").onclick = function() { onPokemonClick("mamoswine"); };
-  document.getElementById("meowscarada").onclick = function() { onPokemonClick("meowscarada"); };
-  document.getElementById("metagross").onclick = function() { onPokemonClick("metagross"); };
-  document.getElementById("mew").onclick = function() { onPokemonClick("mew"); };
-  document.getElementById("mewtwox").onclick = function() { onPokemonClick("mewtwox"); };
-  document.getElementById("mewtwoy").onclick = function() { onPokemonClick("mewtwoy"); };
-  document.getElementById("mimikyu").onclick = function() { onPokemonClick("mimikyu"); };
-  document.getElementById("miraidon").onclick = function() { onPokemonClick("miraidon"); };
-  document.getElementById("mrmime").onclick = function() { onPokemonClick("mrmime"); };
-  document.getElementById("ninetales").onclick = function() { onPokemonClick("ninetales"); };
-  document.getElementById("pikachu").onclick = function() { onPokemonClick("pikachu"); };
-  document.getElementById("sableye").onclick = function() { onPokemonClick("sableye"); };
-  document.getElementById("scizor").onclick = function() { onPokemonClick("scizor"); };
-  document.getElementById("scyther").onclick = function() { onPokemonClick("scyther"); };
-  document.getElementById("slowbro").onclick = function() { onPokemonClick("slowbro"); };
-  document.getElementById("snorlax").onclick = function() { onPokemonClick("snorlax"); };
-  document.getElementById("sylveon").onclick = function() { onPokemonClick("sylveon"); };
-  document.getElementById("talonflame").onclick = function() { onPokemonClick("talonflame"); };
-  document.getElementById("trevenant").onclick = function() { onPokemonClick("trevenant"); };
-  document.getElementById("tsareena").onclick = function() { onPokemonClick("tsareena"); };
-  document.getElementById("tyranitar").onclick = function() { onPokemonClick("tyranitar"); };
-  document.getElementById("umbreon").onclick = function() { onPokemonClick("umbreon"); };
-  document.getElementById("urshifu").onclick = function() { onPokemonClick("urshifu"); };
-  document.getElementById("venusaur").onclick = function() { onPokemonClick("venusaur"); };
-  document.getElementById("wigglytuff").onclick = function() { onPokemonClick("wigglytuff"); };
-  document.getElementById("zacian").onclick = function() { onPokemonClick("zacian"); };
-  document.getElementById("zeraora").onclick = function() { onPokemonClick("zeraora");  };
-  document.getElementById("zoroark").onclick = function() { onPokemonClick("zoroark"); };
+  document.querySelectorAll('.group').forEach(function(element) {
+		element.addEventListener('click', function() {
+			const overlayImage = this.parentElement.querySelector('.pokeball');
+			overlayImage.style.display = 'inline';
+		});
+	});
+  document.getElementById("reset__btn").onclick = function() { resetPokemonData(); };
+  for (let pokemon in pokemonValues) {
+    if (pokemonValues.hasOwnProperty(pokemon)) {
+        document.getElementById(pokemon).onclick = function() { onPokemonClick(pokemon); };
+    }
+}
 });

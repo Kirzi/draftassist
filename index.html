@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>draftassist</title>
+  <title>Kirzi's Draft Assist</title>
   <link rel="stylesheet" id="styles" href="styles.css" />
   <script src="javascript.js"></script>
 </head>
 <body>
 
 <div id="wrapper">
+  <h1 class="name">Kirzi's Pokemon Unite Draft Assist</h1>
   <div id="speedsters">
+    <h2 class="category">Speedsters</h2>
     <a href="#"><img src="pokemon/Dodrio.png" id="dodrio" class="pokemon"></img></a>
     <a href="#"><img src="pokemon/Gengar.png" id="gengar" class="pokemon"></img></a>
     <a href="#"><img src="pokemon/Absol.png" id="absol" class="pokemon"></img></a>
@@ -19,6 +21,7 @@
     <a href="#"><img src="pokemon/Meowscarada.png" id="meowscarada" class="pokemon"></img></a>
   </div>
   <div id="allrounders">
+    <h2 class="category">Allrounders</h2>
     <a href="#"><img src="pokemon/Charizard.png" id="charizard" class="pokemon"></img></a>
     <a href="#"><img src="pokemon/Machamp.png" id="machamp" class="pokemon"></img></a>
     <a href="#"><img src="pokemon/Scyther.png" id="scyther" class="pokemon"></img></a>
@@ -42,7 +45,11 @@
     <a href="#"><img src="pokemon/Ceruledge.png" id="ceruledge" class="pokemon"></img></a>
   </div>
   <div id="attackers">
-    <a href="#"><img src="pokemon/Venusaur.png" id="venusaur" class="pokemon"></img></a>
+    <h2 class="category">Attackers</h2>
+    <div class="image-container">
+      <a href="#"></a><img src="pokemon/Venusaur.png" alt="Venusaur" class="pokemon group" id="venusaur"></img></a>
+      <img src="imgs/pokeball.png" alt="Pokeball" class="pokeball group"></img>
+    </div>
     <a href="#"><img src="pokemon/Pikachu.png" id="pikachu" class="pokemon"></img></a>
     <a href="#"><img src="pokemon/Ninetales.png" id="ninetales" class="pokemon"></img></a>
     <a href="#"><img src="pokemon/MewtwoY.png" id="mewtwoy" class="pokemon"></img></a>
@@ -63,6 +70,7 @@
     <a href="#"><img src="pokemon/Miraidon.png" id="miraidon" class="pokemon"></img></a>
   </div>
   <div id="defenders">
+    <h2 class="category">Defenders</h2>
     <a href="#"><img src="pokemon/Blastoise.png" id="blastoise" class="pokemon"></img></a>
     <a href="#"><img src="pokemon/Slowbro.png" id="slowbro" class="pokemon"></img></a>
     <a href="#"><img src="pokemon/Lapras.png" id="lapras" class="pokemon"></img></a>
@@ -76,6 +84,7 @@
     <a href="#"><img src="pokemon/Greedent.png" id="greedent" class="pokemon"></img></a>
   </div>
   <div id="supporters">
+    <h2 class="category">Supporters</h2>
     <a href="#"><img src="pokemon/Clefable.png" id="clefable" class="pokemon"></img></a>
     <a href="#"><img src="pokemon/Wigglytuff.png" id="wigglytuff" class="pokemon"></img></a>
     <a href="#"><img src="pokemon/Blissey.png" id="blissey" class="pokemon"></img></a>
@@ -85,6 +94,7 @@
     <a href="#"><img src="pokemon/Comfey.png" id="comfey" class="pokemon"></img></a>
     <a href="#"><img src="pokemon/Eldegoss.png" id="eldegoss" class="pokemon"></img></a>
   </div>
+  <button class="main__btn" id="reset__btn"><span>Reset</span></button>
   <div id="about">
     <p>Hi there. Did you find this site from some other means than Kirzi directly linking it to you themselves? How'd that happen?</p>
     <p>This is basically Kirzi's method of visualizing their draft options. Click a mon (or two, or three), then other mons will change color -- blue means that mon is looking like a very good choice, green also being good, yellow is bad, and red is very bad. </p>
