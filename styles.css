@@ -22,6 +22,10 @@ body {
 	box-shadow: 0 1px 3px 1px rgba(0,0,0,.7);
 }
 
+#about p {
+	padding: 5px 0 5px 0;
+}
+
 .pokemon {
 	width: 80px;
 	height: 80px;
