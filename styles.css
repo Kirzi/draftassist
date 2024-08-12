@@ -49,6 +49,7 @@ body {
 	background-color: #0ff;
 }
 
-.bg-orange {
-	background-color: orange;
+.unavailable {
+	background-color: transparent;
+	opacity: 20%;
 }
