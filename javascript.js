@@ -120,8 +120,6 @@ function onPokemonClick(pokemonId) {
       }
     });
 
-
-
     clickedPokemon.delete(pokemonId);
   } else {
     let pokemonPositiveList = pokemonPositiveRelations[pokemonId];
