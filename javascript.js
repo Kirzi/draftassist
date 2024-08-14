@@ -113,6 +113,37 @@ function updateBackgroundColor(pokemonId) {
 	});
 }
 
+function reorderPokemon() {
+
+  let categories = ["speedsters", "allrounders", "attackers", "defenders", "supporters"];
+
+  for (let i = 0; i < categories.length; i++) {
+    const container = document.getElementById(categories[i]);
+    const label = container.querySelector('.category');
+
+    const pokemonElements = Array.from(container.getElementsByClassName('image-container'));
+
+    pokemonElements.sort((a, b) => {
+      const idA = a.querySelector('img.pokemon').id;
+      const idB = b.querySelector('img.pokemon').id;
+      const valueA = pokemonValues[idA];
+      const valueB = pokemonValues[idB];
+
+      if (valueA !== valueB) {
+          return valueB - valueA;
+      }
+
+      const nameA = a.querySelector('img.pokemon').alt;
+      const nameB = b.querySelector('img.pokemon').alt;
+      return nameA.localeCompare(nameB);
+    });
+
+    container.innerHTML = '';
+    container.appendChild(label);
+    pokemonElements.forEach(el => container.appendChild(el));
+  }
+}
+
 
 function onPokemonClick(pokemonId) {
   if (clickedPokemon.has(pokemonId)) {
@@ -150,6 +181,8 @@ function onPokemonClick(pokemonId) {
   }
 
   updateBackgroundColor(pokemonId);
+
+  reorderPokemon();
 }
 
 
@@ -166,6 +199,8 @@ function resetPokemonData() {
         	element.classList.add(colorClass);
 		}
 	}
+
+  reorderPokemon();
 
   clickedPokemon.clear();
 
