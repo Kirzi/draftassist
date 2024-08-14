@@ -69,11 +69,13 @@ let pokemonValues = {
 };
 
 let pokemonStrugglesAgainst = {
-	venusaur: ["absol", "gengar", "dodrio", "leafeon", "zoroark", "talonflame", "zeraora", "meowscarada", "scyther", "gyarados", "mimikyu", "ceruledge", "urshifu"],
+	venusaur: ["dodrio", "leafeon", "zoroark", "talonflame", "zeraora", "meowscarada", "scyther", "gyarados", "mimikyu", "ceruledge", "urshifu"],
 	chandelure: ["dodrio", "talonflame", "zoroark", "gyarados", "decidueye", "inteleon", "venusaur"],
 	delphox: ["absol", "dodrio", "gengar", "leafeon", "meowscarada", "talonflame", "zeraora", "zoroark", "ceruledge", "gyarados", "scyther", "venusaur", "inteleon", "decidueye"],
 	mimikyu: ["aegislash", "tsareena", "blastoise", "metagross", "buzzwole", "urshifu", "garchomp", "tyranitar"],
-	metagross: ["aegislash", "chandelure", "delphox", "gardevoir", "ninetales", "glaceon", "sylveon", "venusaur", "cinderace", "dragapult", "tyranitar", "buzzwole"]
+	metagross: ["aegislash", "chandelure", "delphox", "gardevoir", "ninetales", "glaceon", "sylveon", "venusaur", "cinderace", "dragapult", "tyranitar", "buzzwole"],
+	absol: ["meowscarada", "zeraora", "aegislash", "buzzwole", "ceruledge", "falinks", "garchomp", "machamp", "metagross", "mewtwox", "scizor", "tyranitar", "zacian", "greninja"],
+	leafeon: ["absol", "meowscarada", "talonflame", "zeraora", "zoroark", "aegislash", "buzzwole", "ceruledge", "charizard", "dragonite", "falinks", "garchomp", "gyarados", "machamp", "metagross", "mewtwox", "mimikyu", "scizor", "tyranitar", "urshifu", "zacian"],
 };
 
 let pokemonStrongAgainst = {
@@ -82,6 +84,8 @@ let pokemonStrongAgainst = {
 	delphox: ["aegislash", "buzzwole", "urshifu", "garchomp", "metagross", "tyranitar", "scizor"],
 	mimikyu: ["leafeon", "blaziken", "charizard", "scyther", "dragonite", "venusaur", "espeon", "gardevoir", "glaceon", "sylveon", "decidueye", "cinderace", "inteleon", "cramorant", "duraludon", "dragapult", "miraidon", "mewtwoy"],
 	metagross: ["dodrio", "gengar", "absol", "leafeon", "zoroark", "talonflame", "zeraora", "meowscarada", "scyther", "lucario", "mimikyu", "ceruledge"],
+	absol: ["dodrio", "leafeon", "talonflame", "cinderace", "cramorant", "decidueye", "delphox", "dragapult", "duraludon", "espeon", "gardevoir", "glaceon", "inteleon", "mew", "mewtwoy", "miraidon", "sylveon"],
+	leafeon: ["chandelure", "cinderace", "decidueye", "delphox", "dragapult", "duraludon", "gardevoir", "glaceon", "inteleon", "mewtwoy", "miraidon", "venusaur"],
 };
 
 let colorMap = new Map();
