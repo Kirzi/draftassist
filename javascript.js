@@ -68,14 +68,16 @@ let pokemonValues = {
     zoroark: 0,
 };
 
-let pokemonPositiveRelations = {
-	venusaur: ["absol"],
-	zoroark: ["aegislash", "goodra"],
+let pokemonStrugglesAgainst = {
+	venusaur: ["absol", "gengar", "dodrio", "leafeon", "zoroark", "talonflame", "zeraora", "meowscarada", "scyther", "gyarados", "mimikyu", "ceruledge", "urshifu"],
+	mimikyu: ["aegislash", "tsareena", "blastoise", "metagross", "buzzwole", "urshifu", "garchomp", "tyranitar"],
+	metagross: ["aegislash", "chandelure", "delphox", "gardevoir", "ninetales", "glaceon", "sylveon", "venusaur", "cinderace", "dragapult", "tyranitar", "buzzwole"]
 };
 
-let pokemonNegativeRelations = {
-	venusaur: ["pikachu", "ninetales", "mewtwoy", "espeon", "glaceon", "cramorant", "duraludon"],
-	zoroark: ["venusaur"],
+let pokemonStrongAgainst = {
+	venusaur: ["pikachu", "ninetales", "mewtwoy", "espeon", "glaceon", "cramorant", "duraludon", "scizor", "dragonite", "tyranitar", "metagross", "garchomp", "buzzwole"],
+	mimikyu: ["leafeon", "blaziken", "charizard", "scyther", "dragonite", "venusaur", "espeon", "gardevoir", "glaceon", "sylveon", "decidueye", "cinderace", "inteleon", "cramorant", "duraludon", "dragapult", "miraidon", "mewtwoy"],
+	metagross: ["dodrio", "gengar", "absol", "leafeon", "zoroark", "talonflame", "zeraora", "meowscarada", "scyther", "lucario", "mimikyu", "ceruledge"],
 };
 
 let colorMap = new Map();
@@ -90,7 +92,7 @@ let clickedPokemon = new Set();
 
 function updateBackgroundColor(pokemonId) {
 
-	let pokemonList = pokemonPositiveRelations[pokemonId].concat(pokemonNegativeRelations[pokemonId]);
+	let pokemonList = pokemonStrugglesAgainst[pokemonId].concat(pokemonStrongAgainst[pokemonId]);
 	pokemonList.forEach(function(poke,index) {
 		let element = document.getElementById(poke);
 
@@ -106,14 +108,14 @@ function updateBackgroundColor(pokemonId) {
 
 function onPokemonClick(pokemonId) {
   if (clickedPokemon.has(pokemonId)) {
-    let pokemonPositiveList = pokemonPositiveRelations[pokemonId];   
+    let pokemonPositiveList = pokemonStrugglesAgainst[pokemonId];   
     pokemonPositiveList.forEach(function(poke) {
       if (pokemonValues[poke] !== -2) {
         pokemonValues[poke]--;
       }
     });
 
-    let pokemonNegativeList = pokemonNegativeRelations[pokemonId];
+    let pokemonNegativeList = pokemonStrongAgainst[pokemonId];
     pokemonNegativeList.forEach(function(poke) {
       if (pokemonValues[poke] !== 2) {
         pokemonValues[poke]++;
@@ -122,14 +124,14 @@ function onPokemonClick(pokemonId) {
 
     clickedPokemon.delete(pokemonId);
   } else {
-    let pokemonPositiveList = pokemonPositiveRelations[pokemonId];
+    let pokemonPositiveList = pokemonStrugglesAgainst[pokemonId];
 	  pokemonPositiveList.forEach(function(poke,index) {
       if (pokemonValues[poke] !== 2) {
         pokemonValues[poke]++;
       }
     }); 
 	
-    let pokemonNegativeList = pokemonNegativeRelations[pokemonId];
+    let pokemonNegativeList = pokemonStrongAgainst[pokemonId];
     pokemonNegativeList.forEach(function(poke,index) {
       if (pokemonValues[poke] !== -2) {
         pokemonValues[poke]--;
