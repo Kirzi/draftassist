@@ -70,12 +70,16 @@ let pokemonValues = {
 
 let pokemonStrugglesAgainst = {
 	venusaur: ["absol", "gengar", "dodrio", "leafeon", "zoroark", "talonflame", "zeraora", "meowscarada", "scyther", "gyarados", "mimikyu", "ceruledge", "urshifu"],
+	chandelure: ["dodrio", "talonflame", "zoroark", "gyarados", "decidueye", "inteleon", "venusaur"],
+	delphox: ["absol", "dodrio", "gengar", "leafeon", "meowscarada", "talonflame", "zeraora", "zoroark", "ceruledge", "gyarados", "scyther", "venusaur", "inteleon", "decidueye"],
 	mimikyu: ["aegislash", "tsareena", "blastoise", "metagross", "buzzwole", "urshifu", "garchomp", "tyranitar"],
 	metagross: ["aegislash", "chandelure", "delphox", "gardevoir", "ninetales", "glaceon", "sylveon", "venusaur", "cinderace", "dragapult", "tyranitar", "buzzwole"]
 };
 
 let pokemonStrongAgainst = {
 	venusaur: ["pikachu", "ninetales", "mewtwoy", "espeon", "glaceon", "cramorant", "duraludon", "scizor", "dragonite", "tyranitar", "metagross", "garchomp", "buzzwole"],
+	chandelure: ["cramorant", "espeon", "glaceon", "ninetales", "pikachu", "buzzwole", "aegislash", "garchomp", "metagross", "scizor", "tyranitar"],
+	delphox: ["aegislash", "buzzwole", "urshifu", "garchomp", "metagross", "tyranitar", "scizor"],
 	mimikyu: ["leafeon", "blaziken", "charizard", "scyther", "dragonite", "venusaur", "espeon", "gardevoir", "glaceon", "sylveon", "decidueye", "cinderace", "inteleon", "cramorant", "duraludon", "dragapult", "miraidon", "mewtwoy"],
 	metagross: ["dodrio", "gengar", "absol", "leafeon", "zoroark", "talonflame", "zeraora", "meowscarada", "scyther", "lucario", "mimikyu", "ceruledge"],
 };
